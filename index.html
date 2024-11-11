@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./render.js" type="module" defer></script>
+  <script src="./app.js" type="module" defer></script>
+  <style>
+    /* Стилі для контейнера сіток */
+    .grid-container {
+      display: flex;
+      justify-content: space-around; /* Розподіляє сітки рівномірно */
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Стилі для сітки */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 50px); /* 5 стовпців по 50px */
+      grid-template-rows: repeat(5, 50px); /* 5 рядків по 50px */
+      gap: 2px;
+      border: 1px solid #000; /* Додаємо рамку для кожної сітки */
+    }
+
+    /* Стилі для клітинки */
+    .cell {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+
+    /* Темна клітинка */
+    .dark {
+      background-color: darkgray;
+    }
+
+    /* Світла клітинка */
+    .light {
+      background-color: white;
+    }
+
+    /* Стилі для заголовку */
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+  <title>Grid Coloring</title>
+</head>
+<body>
+  <h2>Спотворене зображення та інші</h2>
+  <!-- Контейнер для 4 сіток -->
+  <div class="grid-container">
+    <div id="gridS1" class="grid"></div>
+    <div id="gridS2" class="grid"></div>
+    <div id="gridS3" class="grid"></div>
+  </div>
+
+  <!-- Спотворене зображення -->
+  <div class="grid-container">
+    <div id="gridS4" class="grid"></div>
+  </div>
+</body>
+</html>
