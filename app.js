@@ -12,17 +12,16 @@ export const S3 = [
   -1, 1,
 ];
 
-// Функція для навчання нейронної мережі за правилом Хебба
-function trainHebbianNetwork(trainingData) {
-  const n = trainingData[0].length;
-  const eta = 1;
+// Функція для навчання мережі Хопфілда
+function trainHopfieldNetwork(patterns) {
+  const n = patterns[0].length;
   let W = Array.from({ length: n }, () => Array(n).fill(0));
 
-  trainingData.forEach((sample) => {
+  patterns.forEach((pattern) => {
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
         if (i !== j) {
-          W[i][j] += eta * sample[i] * sample[j];
+          W[i][j] += pattern[i] * pattern[j];
         }
       }
     }
@@ -82,7 +81,7 @@ function generateTableData(trainingData, W, thresholds) {
 }
 
 // Навчання нейронної мережі
-const W = trainHebbianNetwork([S1, S2, S3]);
+const W = trainHopfieldNetwork([S1, S2, S3]);
 
 // Розрахунок порогів
 const thresholds = calculateThresholds(W);
@@ -93,9 +92,9 @@ const tableDataS2 = generateTableData([S2], W, thresholds);
 const tableDataS3 = generateTableData([S3], W, thresholds);
 
 // Збереження початкових таблиць ваг в окремих змінних
-const initialW_S1 = trainHebbianNetwork([S1]);
-const initialW_S2 = trainHebbianNetwork([S2]);
-const initialW_S3 = trainHebbianNetwork([S3]);
+const initialW_S1 = trainHopfieldNetwork([S1]);
+const initialW_S2 = trainHopfieldNetwork([S2]);
+const initialW_S3 = trainHopfieldNetwork([S3]);
 
 // Виведення початкових значень таблиць ваг
 console.log("Початкові таблиці ваг для кожної букви (S1, S2, S3):");
@@ -124,7 +123,7 @@ console.table(tableDataS3);
 
 // Масив для спотвореного зображення S1
 export const S4 = [
-  -1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, 1, 1, -1,
+  -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, 1, 1, -1,
   -1, -1, 1,
 ];
 
